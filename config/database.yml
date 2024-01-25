@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: bright_events_development
+  
+test:
+  <<: *default
+  database: bright_events_test
+
+production:
+  <<: *default
+  database: bright_events_production
