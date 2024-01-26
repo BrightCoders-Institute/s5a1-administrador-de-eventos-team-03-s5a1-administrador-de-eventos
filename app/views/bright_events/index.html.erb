@@ -1,0 +1,50 @@
+<div>
+  <div>
+  <%= link_to bright_events_path , class: 'btn btn-add' do %>
+    <i class="uil uil-plus"></i>
+    <span>Agregar evento</span>
+  <% end %>
+    
+  </div>
+  <div class="contentTable">
+    <table>
+      <tr>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Fecha</th>
+        <th>Ubicación</th>
+        <th>Editar</th>
+        <th>Ver</th>
+        <th>Eliminar</th>
+      </tr>
+      <tr>
+        <% @events.each do |event|%>
+          <td>
+            <%= event.tittle %>
+          </td>
+          <td>
+            <%= event.description %>
+          </td>
+          <td>
+            <%= event.date %>
+          </td>
+          <td>
+            <%= event.ubication %>
+          </td>
+          <td>
+            <%= event.cost %>
+          </td>
+          <td>
+            <i class="uil uil-pen"></i>
+          </td>
+          <td>
+            <i class="uil uil-eye"></i>
+          </td>
+          <td>
+            <i class="uil uil-trash-alt"></i>
+          </td>
+        <% end %>      
+      </tr>
+    </table>
+  </div>
+</div>

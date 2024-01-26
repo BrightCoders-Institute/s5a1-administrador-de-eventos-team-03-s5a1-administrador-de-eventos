@@ -10,5 +10,5 @@ Rails.application.routes.draw do
 
   get '/home' => 'home#index'
 
-  sources :bright_events
+  resources :bright_events
 end

@@ -3,11 +3,15 @@
   'abstracts/mixins';
 
 @import
+  'base/reset';
+
+@import
   'layout/header',
   'layout/footer';
 
 @import
   'components/hero',
-  'components/buttons';
+  'components/buttons',
+  'components/table';
 
 
