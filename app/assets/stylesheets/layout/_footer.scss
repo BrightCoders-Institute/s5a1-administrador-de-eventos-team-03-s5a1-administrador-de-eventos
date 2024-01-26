@@ -1,0 +1,12 @@
+footer {
+  align-items: center;
+  background-color: $blue;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  padding: 1rem;
+
+  p {
+    color: $white;
+  }
+}

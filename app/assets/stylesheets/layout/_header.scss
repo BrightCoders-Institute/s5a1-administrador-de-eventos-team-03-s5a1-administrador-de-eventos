@@ -1,0 +1,23 @@
+header {
+  align-items: center;
+  background-color: $blue;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+
+  img {
+    height: 50px;
+    width: auto;
+  }
+
+  i {
+    color: $white;
+    font-size: xx-large;
+  }
+}
+
+@include desktop-lg {
+  header i {
+    display: none;
+  }
+}

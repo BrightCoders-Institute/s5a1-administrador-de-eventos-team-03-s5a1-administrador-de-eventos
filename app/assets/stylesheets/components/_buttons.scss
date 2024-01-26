@@ -1,0 +1,20 @@
+.btn {
+  background-color: $blue;
+  border-radius: 5px;
+  color: $white;
+  padding: 20px 10px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  width: 30%;
+
+  &:hover {
+    background-color: darken($blue, 10%);
+  }
+}
+
+@include desktop-lg {
+  .btn {
+    width: 15%;
+  }
+}
