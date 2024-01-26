@@ -7,5 +7,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'home#index'
+
   get '/home' => 'home#index'
+
+  sources :bright_events
 end
