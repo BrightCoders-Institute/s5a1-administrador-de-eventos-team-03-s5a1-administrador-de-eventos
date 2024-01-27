@@ -1,10 +1,12 @@
 class BrightEventsController < ApplicationController
+  before_action :find_event, only: [:show, :edit, :update, :destroy]
+
   def index
     @events = BrightEvent.all
   end
 
   def show
-    @event = BrightEvent.find(params[:id])
+    @event = find_event
   end
 
   def new
@@ -23,11 +25,11 @@ class BrightEventsController < ApplicationController
   end
 
   def edit
-    @events = BrightEvent.find(params[:id])
+    @events = find_event
   end
 
   def update
-    @events = BrightEvent.find(params[:id])
+    @events = find_event
 
     if @events.update(event_params)
       redirect_to bright_event_path
@@ -38,7 +40,7 @@ class BrightEventsController < ApplicationController
   end
 
   def destroy
-    @events = BrightEvent.find(params[:id])
+    @events = find_event
     @events.destroy
 
     redirect_to bright_events_path
@@ -48,5 +50,9 @@ class BrightEventsController < ApplicationController
 
   def event_params
     params.require(:bright_event).permit(:title, :description, :date, :ubication, :cost)
+  end
+
+  def find_event
+    BrightEvent.find(params[:id])
   end
 end
