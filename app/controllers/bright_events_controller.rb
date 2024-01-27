@@ -5,9 +5,7 @@ class BrightEventsController < ApplicationController
     @events = BrightEvent.all
   end
 
-  def show
-    @event = find_event
-  end
+  def show() end
 
   def new
     @events = BrightEvent.new
@@ -24,24 +22,19 @@ class BrightEventsController < ApplicationController
     end
   end
 
-  def edit
-    @events = find_event
-  end
+  def edit() end
 
   def update
-    @events = find_event
-
-    if @events.update(event_params)
+    if @event.update(event_params)
       redirect_to bright_event_path
     else
-      flash[:error] = @events.errors.full_messages.to_sentence
+      flash[:error] = @event.errors.full_messages.to_sentence
       redirect_to edit_bright_event_path
     end
   end
 
   def destroy
-    @events = find_event
-    @events.destroy
+    @event.destroy
 
     redirect_to bright_events_path
   end
@@ -53,6 +46,6 @@ class BrightEventsController < ApplicationController
   end
 
   def find_event
-    BrightEvent.find(params[:id])
+    @event = BrightEvent.find(params[:id])
   end
 end
