@@ -1,0 +1,43 @@
+.contentTable {
+  overflow-x: auto;
+  margin: 2rem;
+}
+
+table {
+  border-collapse: collapse;
+  color: $color-fuente;
+  font-family: Arial, sans-serif;
+  width: 100%;
+
+  thead {
+    background-color: $color-fondo-cabecera;
+    color: $color-fuente-cabecera;
+  }
+
+  th, td {
+    border: 1px solid $color-borde;
+    padding: 8px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  tr:nth-child(even) {
+    background-color: $color-fila-alterna;
+  }
+
+  tr:hover {
+    background-color: $color-hover;
+  }
+
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  // Estilos para pantallas más grandes
+  @include desktop-lg {
+    th, td {
+      white-space: normal;
+    }
+  }
+}

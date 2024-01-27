@@ -1,0 +1,46 @@
+.btn {
+  background-color: $blue;
+  border-radius: 5px;
+  color: $white;
+  padding: 20px 10px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  width: 30%;
+  
+  &:hover {
+    background-color: darken($blue, 10%);
+  }
+}
+
+.btn-add {
+  align-items: center;
+  background-color: $yellow;
+  border-radius: 10px;
+  color: black;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  margin: 2rem;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms ease-in-out;
+  width: 150px;
+
+  &:hover {
+    background-color: darken($yellow, 10%);
+    transform: scale(1.2);
+  }
+  
+  i {
+    transition: display 0.1s ease-in-out;
+    font-size: x-large;
+  }
+}
+
+@include desktop-lg {
+  .btn {
+    width: 15%;
+  }
+}

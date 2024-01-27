@@ -1,0 +1,15 @@
+.hero {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1 {
+    text-align: center;
+  }
+
+  img {
+    height: 350px;
+    width: auto;
+  }
+}
