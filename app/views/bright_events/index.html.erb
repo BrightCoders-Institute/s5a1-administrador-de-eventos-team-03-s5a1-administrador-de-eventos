@@ -1,6 +1,6 @@
 <div class="event-list-container">
   <div>
-    <%= link_to bright_events_path , class: 'btn btn-add' do %>
+    <%= link_to new_bright_event_path , class: 'btn btn-add' do %>
       <i class="uil uil-plus"></i>
       <span>Agregar evento</span>
     <% end %>
@@ -17,10 +17,10 @@
         <th>Ver</th>
         <th>Eliminar</th>
       </tr>
-      <tr>
-        <% @events.each do |event|%>
+      <% @events.each do |event|%>
+        <tr>
           <td>
-            <%= event.tittle %>
+            <%= event.title %>
           </td>
           <td>
             <%= event.description %>
@@ -29,7 +29,7 @@
             <%= event.date %>
           </td>
           <td>
-            <%= event.ubication %>
+            <%= event.location %>
           </td>
           <td>
             <%= event.cost %>
@@ -43,8 +43,8 @@
           <td>
             <i class="uil uil-trash-alt"></i>
           </td>
-        <% end %>      
-      </tr>
+        </tr>
+      <% end %>      
     </table>
   </div>
 </div>

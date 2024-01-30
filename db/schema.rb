@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_25_005252) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_30_011145) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bright_events", force: :cascade do |t|
-    t.string "tittle"
+    t.string "title"
     t.string "description"
     t.datetime "date"
-    t.string "ubication"
+    t.string "location"
     t.decimal "cost", precision: 6, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
