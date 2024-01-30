@@ -8,16 +8,16 @@ class BrightEventsController < ApplicationController
   def show() end
 
   def new
-    @events = BrightEvent.new
+    @event = BrightEvent.new
   end
 
   def create
-    @events = BrightEvent.new(event_params)
+    @event = BrightEvent.new(event_params)
 
-    if @events.save
+    if @event.save
       redirect_to bright_events_path
     else
-      flash[:error] = @events.errors.full_messages.to_sentence
+      flash[:error] = @event.errors.full_messages.to_sentence
       redirect_to new_bright_event_path
     end
   end
@@ -42,7 +42,7 @@ class BrightEventsController < ApplicationController
   private
 
   def event_params
-    params.require(:bright_event).permit(:title, :description, :date, :ubication, :cost)
+    params.require(:bright_event).permit(:title, :description, :date, :location, :cost)
   end
 
   def find_event
