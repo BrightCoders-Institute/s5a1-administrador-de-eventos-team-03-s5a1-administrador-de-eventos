@@ -1,8 +1,13 @@
 .form-wrap {
     border-radius: 15px;
     display: flex;
+    flex-direction: column;
     height: 100%;
 
+    .btn {
+      margin: 10px;
+      width: 30px;
+    }
 
     .form-container {
         background-color: darken($white, 3%);
@@ -24,6 +29,11 @@
 
     .form-container .btn-submit {
         padding: 10px;
+        width: inherit;
+    }
+
+    .form-container .btn {
+        margin: 10px;
         width: inherit;
     }
 }
