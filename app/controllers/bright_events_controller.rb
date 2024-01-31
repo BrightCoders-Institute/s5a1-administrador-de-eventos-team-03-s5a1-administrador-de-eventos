@@ -22,11 +22,13 @@ class BrightEventsController < ApplicationController
     end
   end
 
-  def edit() end
+  def edit
+    @event = BrightEvent.find(params[:id])
+  end
 
   def update
     if @event.update(event_params)
-      redirect_to bright_event_path
+      redirect_to bright_events_path
     else
       flash[:error] = @event.errors.full_messages.to_sentence
       redirect_to edit_bright_event_path

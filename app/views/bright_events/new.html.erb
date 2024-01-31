@@ -1,4 +1,7 @@
 <div class="form-wrap">
+  <%= link_to bright_events_path, class: 'btn btn-return' do %>
+    <i class="uil uil-arrow-left"></i>
+  <% end %>  
   <div class="form-container">
     <h1>Create Event</h1>
     <%= form_for (@event) do |f| %>

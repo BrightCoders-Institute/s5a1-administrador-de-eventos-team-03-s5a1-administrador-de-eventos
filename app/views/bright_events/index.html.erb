@@ -1,11 +1,11 @@
 <div class="event-list-container">
   <div>
-    <%= link_to new_bright_event_path , class: 'btn btn-add' do %>
+    <%= link_to new_bright_event_path , class: 'btn btn-warning' do %>
       <i class="uil uil-plus"></i>
       <span>Agregar evento</span>
     <% end %>
   </div>
-  <div class="contentTable">
+  <div class="table-container">
     <table>
       <tr>
         <th>Título</th>
@@ -35,7 +35,9 @@
             <%= event.cost %>
           </td>
           <td>
-            <i class="uil uil-pen"></i>
+            <%= link_to edit_bright_event_path(event.id) do %>
+              <i class="uil uil-pen"></i>
+            <% end %>
           </td>
           <td>
             <i class="uil uil-eye"></i>
