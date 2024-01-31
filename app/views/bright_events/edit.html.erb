@@ -3,14 +3,7 @@
     <i class="uil uil-arrow-left"></i>
   <% end %>  
   <div class="form-container">
-    <h1>Create Event</h1>
-    <%= form_for (@event) do |f| %>
-      <%= f.text_field :title, placeholder: 'Título', value: @event.title, required: true %>
-      <%= f.text_field :description, placeholder: 'Descripción', value: @event.description, required: true %>
-      <%= f.date_field :date, placeholder: 'Fecha', value: @event.date, min: 0.days.ago, required: true %>
-      <%= f.text_field :location, placeholder: 'Ubicación', value: @event.location, required: true %>
-      <%= f.number_field :cost, in: 0.00..1000000.00, step: 0.01, placeholder: 'Precio', value: @event.cost, required: true %>
-      <%= f.submit 'Guardar cambios', class: 'btn btn-submit btn-warning', required: true %>
-    <% end %>
+    <h1>Editar Evento</h1>
+    <%= render 'form' %>
   </div>
 </div>
