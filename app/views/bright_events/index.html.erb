@@ -43,7 +43,9 @@
             <i class="uil uil-eye"></i>
           </td>
           <td>
-            <i class="uil uil-trash-alt"></i>
+            <%= link_to bright_event_path(event), data: { turbo_confirm: '¿Estás seguro de que deseas eliminar esto?', turbo_method: :delete } do %>
+              <i class="uil uil-trash-alt"></i>
+            <% end %>
           </td>
         </tr>
       <% end %>      
