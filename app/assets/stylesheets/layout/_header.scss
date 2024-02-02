@@ -15,6 +15,11 @@ header {
     color: $white;
     font-size: xx-large;
   }
+
+  a {
+    color: $white;
+    font-size: larger;
+  }
 }
 
 @include desktop-lg {
