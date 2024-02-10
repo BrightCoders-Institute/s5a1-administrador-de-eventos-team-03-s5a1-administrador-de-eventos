@@ -5,5 +5,10 @@
     <% end %>
   </div>
   <i class="uil uil-bars"></i>
-  <%= link_to 'Inicia Sesion', user_session_path %>
+  <% if current_user %>
+    <%= link_to 'Mis eventos', user_bright_events_path %>
+    <%= link_to 'Cerrar Sesion', destroy_user_session_path, data: { turbo_method: :delete } %>
+  <% else %>
+    <%= link_to 'Inicia Sesion', new_user_session_path %>
+  <% end %>
 </header>
