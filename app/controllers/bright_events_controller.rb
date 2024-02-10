@@ -1,5 +1,5 @@
 class BrightEventsController < ApplicationController
-  before_action :find_event, only: [:show, :edit, :update, :destroy]
+  before_action :find_event, only: %i[show edit update destroy purge_image]
 
   def index
     @events = BrightEvent.all
@@ -11,19 +11,26 @@ class BrightEventsController < ApplicationController
     @event = BrightEvent.new
   end
 
+  def user_events
+    @events = current_user.bright_events
+  end
+
   def create
-    @event = BrightEvent.new(event_params)
+    @event = current_user.bright_events.create(event_params)
 
     if @event.save
-      redirect_to bright_events_path
+      redirect_to user_bright_events_path
     else
       flash[:error] = @event.errors.full_messages.to_sentence
       redirect_to new_bright_event_path
     end
   end
 
-  def edit
-    @event = BrightEvent.find(params[:id])
+  def edit() end
+
+  def purge_image
+    @event.image.destroy
+    redirect_back fallback_location: edit_bright_event_path(@event.id), notice: 'Imagen eliminada con éxito'
   end
 
   def update
@@ -44,7 +51,7 @@ class BrightEventsController < ApplicationController
   private
 
   def event_params
-    params.require(:bright_event).permit(:title, :description, :date, :location, :cost)
+    params.require(:bright_event).permit(:title, :description, :date, :location, :cost, :image)
   end
 
   def find_event

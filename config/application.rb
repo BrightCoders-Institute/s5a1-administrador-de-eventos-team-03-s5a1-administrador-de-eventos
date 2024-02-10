@@ -16,6 +16,18 @@ module S5a1AdministradorDeEventosTeam03S5a1AdministradorDeEventos
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
 
+    # config/initializers/locale.rb
+
+    # Where the I18n library should search for translation files
+    I18n.load_path += Dir[Rails.root.join('lib', 'locale', '*.{rb,yml}')]
+
+    # Permitted locales available for the application
+    I18n.available_locales = [:en, :es]
+
+    # Set default locale to something other than :en
+    I18n.default_locale = :es
+
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
