@@ -29,3 +29,15 @@
 
 es:
   hello: "Hello world"
+  table_headers:
+    events:
+      title: "Título"
+      description: "Descripción"
+      date: "Fecha"
+      location: "Ubicación"
+      cost: "Costo"
+      privacy: "Privacidad"
+      image: "Imagen"
+      edit: "Editar"
+      view: "Ver"
+      delete: "Eliminar"

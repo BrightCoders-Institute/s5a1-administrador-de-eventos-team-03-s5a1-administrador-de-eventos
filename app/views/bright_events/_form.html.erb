@@ -13,11 +13,8 @@
   </div>
   <% if action_name == 'edit' && @event.image.attached? %>
     <div class="image-container">
-      <%= link_to purge_image_bright_event_path(@event), data: { turbo_method: :delete } do %>
-        <p>
-          <i class="fas fa-trash-alt"></i>
-           Eliminar imagen
-        </p>
+      <%= link_to purge_image_bright_event_path(@event), method: :delete, data: { turbo_method: :delete } do %>
+        <i class="fas fa-trash-alt"></i> Eliminar imagen
       <% end %>
       <%= image_tag(@event.image) %>
     </div>

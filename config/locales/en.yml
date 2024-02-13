@@ -29,3 +29,16 @@
 
 en:
   hello: "Hello world"
+  table_headers:
+    events:
+      title: "Title"
+      description: "Description"
+      date: "Date"
+      location: "Ubication"
+      cost: "Cost"
+      privacy: "Privacy"
+      image: "Image"
+      actions: 
+      edit: "Edit"
+      view: "view"
+      delete: "Delete"

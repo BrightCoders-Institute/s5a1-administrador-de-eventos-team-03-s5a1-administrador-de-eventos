@@ -5,7 +5,7 @@ class BrightEventsController < ApplicationController
     @events = BrightEvent.all
   end
 
-  def show() end
+  def show; end
 
   def new
     @event = BrightEvent.new
@@ -26,7 +26,7 @@ class BrightEventsController < ApplicationController
     end
   end
 
-  def edit() end
+  def edit; end
 
   def purge_image
     @event.image.destroy

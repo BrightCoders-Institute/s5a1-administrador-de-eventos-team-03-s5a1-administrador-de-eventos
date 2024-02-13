@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'home#index'
 
-  get 'home/' => 'home#index'
-
   get 'bright_events/user', to: 'bright_events#user_events', as: :user_bright_events
   resources :bright_events do
     member do

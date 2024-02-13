@@ -8,16 +8,9 @@
   <div class="table-container">
     <table>
       <tr>
-        <th>Título</th>
-        <th>Descripción</th>
-        <th>Fecha</th>
-        <th>Ubicación</th>
-        <th>Costo</th>
-        <th>Privacidad</th>
-        <th>Imagen</th>
-        <th>Editar</th>
-        <th>Ver</th>
-        <th>Eliminar</th>
+        <% t( :events, scope: %w[table_headers] ).each do |item, value| %>
+          <th><%= value %></th>
+        <% end %>
       </tr>
       <% @events.each do |event|%>
         <tr>
@@ -37,7 +30,7 @@
             <%= event.cost %>
           </td>
           <td>
-            <%= event.privacy ? 'Privado' : 'Publico' %>
+            <%= event.privacy ? 'Privado' : 'Público' %>
           </td>
           <td>
             <% if event&.image.attached? %>
