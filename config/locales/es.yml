@@ -27,18 +27,17 @@
 #       "yes": yup
 #       enabled: "ON"
 
-en:
+es:
   hello: "Hello world"
   table_headers:
     events:
-      title: "Title"
-      description: "Description"
-      date: "Date"
-      location: "Ubication"
-      cost: "Cost"
-      privacy: "Privacy"
-      image: "Image"
-      actions: 
-      edit: "Edit"
-      view: "view"
-      delete: "Delete"
+      title: "Título"
+      description: "Descripción"
+      date: "Fecha"
+      location: "Ubicación"
+      cost: "Costo"
+      privacy: "Privacidad"
+      image: "Imagen"
+      edit: "Editar"
+      view: "Ver"
+      delete: "Eliminar"

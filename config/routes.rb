@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root 'bright_events#index'
+  root 'home#index'
 
-  get 'home/' => 'home#index'
-
-  resources :bright_events
+  get 'bright_events/user', to: 'bright_events#user_events', as: :user_bright_events
+  resources :bright_events do
+    member do
+      delete :purge_image
+    end
+  end
 end
