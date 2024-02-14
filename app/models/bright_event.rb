@@ -7,4 +7,6 @@ class BrightEvent < ApplicationRecord
 
   has_one_attached :image
   belongs_to :user
+
+  validates :image, content_type: { in: %w[image/jpeg image/png image/jpg], message: 'Debe ser un archivo JPEG/PNG' }
 end
