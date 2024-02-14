@@ -1,6 +1,5 @@
 html, body {
   font-family: 'Ubuntu', sans-serif;
-  height: 100%;
   margin: 0;
 }
 
@@ -8,4 +7,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
 }

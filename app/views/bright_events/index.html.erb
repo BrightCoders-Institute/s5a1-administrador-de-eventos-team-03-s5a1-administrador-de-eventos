@@ -5,42 +5,25 @@
       <span>Agregar evento</span>
     <% end %>
   </div>
-  <div class="table-container">
-    <table>
-      <tr>
-        <% t( :events, scope: %w[table_headers] ).each do |item, value| %>
-          <th><%= value %></th>
-        <% end %>
-      </tr>
-      <% @events.each do |event|%>
-        <tr>
-          <td>
-            <%= event.title %>
-          </td>
-          <td>
-            <%= event.description %>
-          </td>
-          <td>
-            <%= event.date %>
-          </td>
-          <td>
-            <%= event.location %>
-          </td>
-          <td>
-            <%= event.cost %>
-          </td>
-          <td>
-            <%= event.privacy ? 'Privado' : 'Público' %>
-          </td>
-          <td>
-            <% if event&.image.attached? %>
-              <%= image_tag event.image %>
-            <% else %>
-              <p>No hay imagen</p>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>      
-    </table>
+  <div class="cards-container">
+    <% @events.each do |event|%>
+      <div class="card">
+        <div class="card-header" style="background-image: url(<%= url_for(event.image) if event&.image.attached? %>)">
+        </div>
+        <div class="card-body">
+          <div class="info-event">
+            <h2><%= event.title %></h2>
+            <h3><%= event.user.username %></h3>
+            <h4><%= event.date %></h4>
+            <h5><%= event.location %></h5>
+          </div>
+          <p><%= event.description %></p>
+        </div>
+        <div class="card-footer">
+          <p>$ <%= event.cost %> MX</p>
+          <p><%= event.privacy ? 'Privado' : 'Público' %></p>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -2,9 +2,10 @@ header {
   align-items: center;
   background-color: $blue;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  padding: 1rem;
   margin-bottom: 2rem;
+  padding: 1rem;
 
   img {
     height: 50px;
@@ -19,11 +20,12 @@ header {
   a {
     color: $white;
     font-size: larger;
+    padding: 8px 0;
   }
 }
 
 @include desktop-lg {
-  header i {
-    display: none;
+  header {
+    flex-direction: row;
   }
 }
