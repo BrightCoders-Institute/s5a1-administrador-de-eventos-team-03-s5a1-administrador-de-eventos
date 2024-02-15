@@ -1,29 +1,8 @@
 <div class="event-list-container">
-  <div>
-    <%= link_to new_bright_event_path , class: 'btn btn-warning' do %>
-      <i class="uil uil-plus"></i>
-      <span>Agregar evento</span>
-    <% end %>
-  </div>
-  <div class="cards-container">
-    <% @events.each do |event|%>
-      <div class="card">
-        <div class="card-header" style="background-image: url(<%= url_for(event.image) if event&.image.attached? %>)">
-        </div>
-        <div class="card-body">
-          <div class="info-event">
-            <h2><%= event.title %></h2>
-            <h3><%= event.user.username %></h3>
-            <h4><%= event.date %></h4>
-            <h5><%= event.location %></h5>
-          </div>
-          <p><%= event.description %></p>
-        </div>
-        <div class="card-footer">
-          <p>$ <%= event.cost %> MX</p>
-          <p><%= event.privacy ? 'Privado' : 'Público' %></p>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <h1>Eventos Públicos</h1>
+  <%= link_to new_bright_event_path , class: 'btn btn-warning' do %>
+    <i class="uil uil-plus"></i>
+    <span>Agregar evento</span>
+  <% end %>
+  <%= render 'cards_container' %>
 </div>

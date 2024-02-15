@@ -1,0 +1,43 @@
+<div class="cards-container">
+  <% @events.each do |event|%>
+    <div class="card">
+      <div class="card-header" style="background-image: url(<%= url_for(event.image) if event&.image.attached? %>)">
+      </div>
+      <div class="card-body">
+        <div class="info-event">
+          <h2><%= event.title %></h2>
+          <h3><%= event.user.username %></h3>
+          <h4><%= event.date %></h4>
+          <h5><%= event.location %></h5>
+        </div>
+        <p><%= event.description %></p>
+      </div>
+      <div class="card-footer">
+        <p>$ <%= event.cost %> MX</p>
+        <p><%= event.privacy ? 'Privado' : 'Público' %></p>
+      </div>
+      <% if action_name == 'user_events' %>
+        <div class="card-footer">
+          <div class="action">
+            <%= link_to edit_bright_event_path(event.id) do %>
+              <label for="">Editar</label>
+              <i class="uil uil-pen"></i>
+            <% end %>
+          </div>
+          <div class="action">
+            <%= link_to edit_bright_event_path(event.id) do %>
+              <label for="">Mostrar</label>
+              <i class="uil uil-eye"></i>
+            <% end %>
+          </div>
+          <div class="action">
+            <%= link_to bright_event_path(event), data: { turbo_confirm: '¿Estás seguro de que deseas eliminar esto?', turbo_method: :delete } do %>
+              <label for="">Eliminar</label>
+              <i class="uil uil-trash-alt"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
