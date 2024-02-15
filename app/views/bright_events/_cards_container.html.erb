@@ -7,13 +7,13 @@
         <div class="info-event">
           <h2><%= event.title %></h2>
           <h3><%= event.user.username %></h3>
-          <h4><%= event.date %></h4>
+          <h4><%= Time.at(event.date).strftime('%d/%m/%Y') %></h4>
           <h5><%= event.location %></h5>
         </div>
         <p><%= event.description %></p>
       </div>
       <div class="card-footer">
-        <p>$ <%= event.cost %> MX</p>
+        <p>$ <%= event.cost %> MXN</p>
         <p><%= event.privacy ? 'Privado' : 'Público' %></p>
       </div>
       <% if action_name == 'user_events' %>

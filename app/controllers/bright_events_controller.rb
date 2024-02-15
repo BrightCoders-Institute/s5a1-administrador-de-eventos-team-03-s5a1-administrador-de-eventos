@@ -16,6 +16,8 @@ class BrightEventsController < ApplicationController
   end
 
   def create
+    puts "Holi"
+    puts event_params
     @event = current_user.bright_events.create(event_params)
 
     if @event.save

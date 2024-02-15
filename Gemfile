@@ -57,4 +57,4 @@ end
 
 gem "image_processing", "~> 1.12"
 
-gem 'active_storage_validations', '~> 0.8.1'
+gem "active_storage_validations", "~> 1.1"
