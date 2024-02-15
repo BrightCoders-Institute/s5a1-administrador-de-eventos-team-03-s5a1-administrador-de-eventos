@@ -1,59 +1,8 @@
 <div class="event-list-container">
-  <div>
-    <%= link_to new_bright_event_path , class: 'btn btn-warning' do %>
-      <i class="uil uil-plus"></i>
-      <span>Agregar evento</span>
-    <% end %>
-  </div>
-  <div class="table-container">
-    <table>
-      <tr>
-        <% t( :events, scope: %w[table_headers] ).each do |item, value| %>
-          <th><%= value %></th>
-        <% end %>
-      </tr>
-      <% @events.each do |event|%>
-        <tr>
-          <td>
-            <%= event.title %>
-          </td>
-          <td>
-            <%= event.description %>
-          </td>
-          <td>
-            <%= event.date %>
-          </td>
-          <td>
-            <%= event.location %>
-          </td>
-          <td>
-            <%= event.cost %>
-          </td>
-          <td>
-            <%= event.privacy ? 'Privado' : 'Público' %>
-          </td>
-          <td>
-            <% if event&.image.attached? %>
-              <%= image_tag event.image %>
-            <% else %>
-              <p>No hay imagen</p>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to edit_bright_event_path(event.id) do %>
-              <i class="uil uil-pen"></i>
-            <% end %>
-          </td>
-          <td>
-            <i class="uil uil-eye"></i>
-          </td>
-          <td>
-            <%= link_to bright_event_path(event), data: { turbo_confirm: '¿Estás seguro de que deseas eliminar esto?', turbo_method: :delete } do %>
-              <i class="uil uil-trash-alt"></i>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>      
-    </table>
-  </div>
+  <h1>Mis eventos</h1>
+  <%= link_to new_bright_event_path , class: 'btn btn-warning' do %>
+    <i class="uil uil-plus"></i>
+    <span>Agregar evento</span>
+  <% end %>
+  <%= render 'cards_container' %>
 </div>

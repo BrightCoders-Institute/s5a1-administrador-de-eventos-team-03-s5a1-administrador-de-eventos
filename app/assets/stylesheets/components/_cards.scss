@@ -1,0 +1,63 @@
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0;
+
+  .card {
+    background-color: darken($white, 2%);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    width: 100%;
+    
+    div:not(:last-child, .action) {
+      border-bottom: 1px solid darken($white, 20%);
+    }
+
+    &-header {
+      align-items: center;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      filter: brightness(0.5);
+      height: 10rem;
+      justify-content: space-between;
+    }
+
+    &-body {
+      padding: 1rem;
+    }
+
+    &-footer {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+    }
+  }
+}
+
+.cards-container .card .card-body .info-event {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 1rem 0;
+
+  h2, h3, h4 {
+    margin-bottom: 1rem;
+  }
+}
+
+@include desktop-lg {
+  .cards-container {
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    .card {
+      width: 30%;
+    }
+  }
+}

@@ -2,7 +2,7 @@ class BrightEventsController < ApplicationController
   before_action :find_event, only: %i[show edit update destroy purge_image]
 
   def index
-    @events = BrightEvent.all
+    @events = BrightEvent.where(privacy: false)
   end
 
   def show; end
@@ -16,6 +16,8 @@ class BrightEventsController < ApplicationController
   end
 
   def create
+    puts "Holi"
+    puts event_params
     @event = current_user.bright_events.create(event_params)
 
     if @event.save
@@ -35,7 +37,7 @@ class BrightEventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to bright_events_path
+      redirect_to user_bright_events_path
     else
       flash[:error] = @event.errors.full_messages.to_sentence
       redirect_to edit_bright_event_path
@@ -51,7 +53,7 @@ class BrightEventsController < ApplicationController
   private
 
   def event_params
-    params.require(:bright_event).permit(:title, :description, :date, :location, :cost, :image)
+    params.require(:bright_event).permit(:title, :description, :date, :location, :cost, :image, :privacy)
   end
 
   def find_event
