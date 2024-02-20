@@ -1,8 +1,5 @@
 <div class="event-list-container">
   <h1>Mis eventos</h1>
-  <%= link_to new_bright_event_path , class: 'btn btn-warning' do %>
-    <i class="uil uil-plus"></i>
-    <span>Agregar evento</span>
-  <% end %>
+  <%= render 'action_bar' %>
   <%= render 'cards_container' %>
 </div>
