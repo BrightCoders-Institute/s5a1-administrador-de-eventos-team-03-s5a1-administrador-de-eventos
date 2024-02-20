@@ -2,7 +2,8 @@ class BrightEventsController < ApplicationController
   before_action :find_event, only: %i[show edit update destroy purge_image]
 
   def index
-    @events = BrightEvent.where(privacy: false)
+    @events = BrightEvent.all_events(current_user).page params[:page]
+    filters if filters?
   end
 
   def show; end
@@ -12,12 +13,11 @@ class BrightEventsController < ApplicationController
   end
 
   def user_events
-    @events = current_user.bright_events
+    @events = current_user.bright_events.page params[:page]
+    filters if filters?
   end
 
   def create
-    puts "Holi"
-    puts event_params
     @event = current_user.bright_events.create(event_params)
 
     if @event.save
@@ -52,8 +52,31 @@ class BrightEventsController < ApplicationController
 
   private
 
+  def filters
+    @events = @events.filter_date(params[:date_from], params[:date_to]) if date_filter?
+    if params[:privacy] == 'Todos' && params[:privacy].present?
+      @events = @events.all_events(current_user)
+    elsif params[:privacy] == 'true' && params[:privacy].present?
+      @events = current_user.bright_events.where(privacy: true)
+    elsif params[:privacy] == 'false' && params[:privacy].present?
+      @events = @events.where(privacy: params[:privacy])
+    else
+      @events = @events
+    end
+
+    @events
+  end
+
   def event_params
     params.require(:bright_event).permit(:title, :description, :date, :location, :cost, :image, :privacy)
+  end
+
+  def date_filter?
+    params[:date_from].present? && params[:date_to].present?
+  end
+
+  def filters?
+    params[:date_from].present? || params[:date_to].present? || params[:privacy].present?
   end
 
   def find_event

@@ -58,3 +58,5 @@ end
 gem "image_processing", "~> 1.12"
 
 gem "active_storage_validations", "~> 1.1"
+
+gem "kaminari", "~> 1.2"
