@@ -1,7 +1,7 @@
 <%= form_for (@event) do |f| %>
   <%= f.text_field :title, placeholder: 'Título', value: @event.title, required: true %>
   <%= f.text_field :description, placeholder: 'Descripción', value: @event.description, required: true %>
-  <%= f.date_field :date, placeholder: 'Fecha', value: @event.date, min: 0.days.ago, required: true %>
+  <%= f.date_field :date, id: 'event_date', placeholder: 'Fecha', value: @event.date, min: 0.days.ago, required: true, data: { event_form_target: "date", action: "change->event-form#updateMaxDate" } %>
   <%= f.text_field :location, placeholder: 'Ubicación', value: @event.location, required: true %>
   <%= f.number_field :cost, in: 0.00..1000000.00, step: 0.01, placeholder: 'Precio', value: @event.cost, required: true %>
   <div>
@@ -16,9 +16,11 @@
       <%= link_to purge_image_bright_event_path(@event), method: :delete, data: { turbo_method: :delete } do %>
         <i class="fas fa-trash-alt"></i> Eliminar imagen
       <% end %>
-      <%= image_tag @event.image.representation(resize_to_limit: [300, 300]) if @event.image.representable? %>
+      <%= image_tag @event.image.representation(resize_to_limit: [300, 300]) if @event.image.representable? %> 
     </div>
   <% end %>
   <%= f.file_field :image, value: @event.image, accept:"image/png, image/jpg, image/jpeg" %>
+  <p>Configura el recordatorio para tu evento:</p>
+  <%= f.datetime_field :reminder, id: 'event_reminder', value: @event.reminder, min: Time.current.strftime("%Y-%m-%dT%H:%M"), max: @event.date ? @event.date.strftime("%Y-%m-%dT%H:%M") : nil, data: { event_form_target: "reminder" } %>
   <%= f.submit 'Guardar cambios', class: 'btn btn-submit' %>
 <% end %>

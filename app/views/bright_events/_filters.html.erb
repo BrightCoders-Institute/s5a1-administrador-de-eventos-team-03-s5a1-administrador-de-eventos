@@ -5,8 +5,8 @@
       <%= label_tag 'privacy', 'Privacidad: ' %>
       <%= select_tag 'privacy',
                 options_for_select([['Todos', 'Todos'], ['Público', false], ['Privado', true]],
-                                  params[:privacy]),
-                class: 'form-control' %>
+                                    params[:privacy]),
+                  class: 'form-control' %>
     </div>
 
     <div class="form-group">
@@ -24,7 +24,7 @@
 
   <script>
     function updateMinDate() {
-      var dateFromValue = document.getElementById('date_from').value;
+      let dateFromValue = document.getElementById('date_from').value;
       document.getElementById('date_to').min = dateFromValue;
     }
   </script>

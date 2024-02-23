@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h2>Recordatorio del evento  <%= @event.title %></h2>
+
+    <strong>Nombre del evento:</strong><p><%= @event.title %></p>
+    <strong>Descripción:</strong><p><%= @event.description %></p>
+    <strong>Fecha del evento:</strong><p><%= Time.at(@event.date).strftime('%d/%m/%Y') %></p>
+  </body>
+</html>
