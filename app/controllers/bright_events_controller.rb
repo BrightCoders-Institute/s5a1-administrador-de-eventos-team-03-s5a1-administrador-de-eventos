@@ -21,6 +21,7 @@ class BrightEventsController < ApplicationController
     @event = current_user.bright_events.create(event_params)
 
     if @event.save
+      EventReminderJob.set(wait_until: @event.reminder).perform_later(@event.id, @event.updated_at)
       redirect_to user_bright_events_path
     else
       flash[:error] = @event.errors.full_messages.to_sentence
@@ -37,6 +38,7 @@ class BrightEventsController < ApplicationController
 
   def update
     if @event.update(event_params)
+      EventReminderJob.set(wait_until: @event.reminder).perform_later(@event.id, @event.updated_at)
       redirect_to user_bright_events_path
     else
       flash[:error] = @event.errors.full_messages.to_sentence
@@ -68,7 +70,7 @@ class BrightEventsController < ApplicationController
   end
 
   def event_params
-    params.require(:bright_event).permit(:title, :description, :date, :location, :cost, :image, :privacy)
+    params.require(:bright_event).permit(:title, :description, :date, :location, :cost, :image, :privacy, :reminder)
   end
 
   def date_filter?

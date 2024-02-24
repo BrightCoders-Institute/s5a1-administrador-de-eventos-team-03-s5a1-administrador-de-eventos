@@ -28,12 +28,17 @@ module S5a1AdministradorDeEventosTeam03S5a1AdministradorDeEventos
     I18n.default_locale = :es
 
 
+    # config.active_job.queue_adapter = :sidekiq
+
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = "Mexico City"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.importmap.enabled = true
+    config.importmap.auto_enable = true
   end
 end
