@@ -4,6 +4,7 @@ class BrightEventsController < ApplicationController
   def index
     @events = BrightEvent.all_events(current_user).page params[:page]
     filters if filters?
+    download_csv if params[:format] == 'csv'
   end
 
   def show; end
@@ -15,6 +16,7 @@ class BrightEventsController < ApplicationController
   def user_events
     @events = current_user.bright_events.page params[:page]
     filters if filters?
+    download_csv if params[:format] == 'csv'
   end
 
   def create
@@ -59,11 +61,11 @@ class BrightEventsController < ApplicationController
     if params[:privacy] == 'Todos' && params[:privacy].present?
       @events = @events.all_events(current_user)
     elsif params[:privacy] == 'true' && params[:privacy].present?
-      @events = current_user.bright_events.where(privacy: true)
+      @events = current_user.bright_events.where(privacy: true).page params[:page]
     elsif params[:privacy] == 'false' && params[:privacy].present?
       @events = @events.where(privacy: params[:privacy])
-    else
-      @events = @events
+
+      @events
     end
 
     @events
@@ -83,5 +85,12 @@ class BrightEventsController < ApplicationController
 
   def find_event
     @event = BrightEvent.find(params[:id])
+  end
+
+  def download_csv
+    respond_to do |format|
+      format.html
+      format.csv { send_data BrightEvent.to_csv(@events), filename: "eventos-#{Date.today}.csv" }
+    end
   end
 end

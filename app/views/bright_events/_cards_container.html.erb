@@ -1,3 +1,4 @@
+<%= link_to "Exportar Eventos", { action: "#{action_name}", format: "csv" }.merge(params.permit(:privacy, :date_from, :date_to))%>
 <div class="cards-container">
   <% @events.each do |event|%>
     <div class="card">
@@ -25,12 +26,6 @@
             <% end %>
           </div>
           <div class="action">
-            <%= link_to edit_bright_event_path(event.id) do %>
-              <label for="">Mostrar</label>
-              <i class="uil uil-eye"></i>
-            <% end %>
-          </div>
-          <div class="action">
             <%= link_to bright_event_path(event), data: { turbo_confirm: '¿Estás seguro de que deseas eliminar esto?', turbo_method: :delete } do %>
               <label for="">Eliminar</label>
               <i class="uil uil-trash-alt"></i>
@@ -41,4 +36,4 @@
     </div>
   <% end %>
 </div>
-<%= paginate @events %>
+<%= paginate @events if @events %>
